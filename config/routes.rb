@@ -1,5 +1,7 @@
 Ride4Ryan::Application.routes.draw do
   
+  get "home/index"
+
   root :to => 'home#index'
   
   resources :users
