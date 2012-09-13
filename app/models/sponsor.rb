@@ -1,3 +1,3 @@
-class Day < ActiveRecord::Base
+class Sponsor < ActiveRecord::Base
   # attr_accessible :title, :body
 end

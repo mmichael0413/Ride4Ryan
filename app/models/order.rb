@@ -1,3 +1,3 @@
-class Day < ActiveRecord::Base
+class Order < ActiveRecord::Base
   # attr_accessible :title, :body
 end

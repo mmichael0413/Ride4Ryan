@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120913004344) do
+ActiveRecord::Schema.define(:version => 20120913020539) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(:version => 20120913004344) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
   end
 
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
@@ -34,20 +37,51 @@ ActiveRecord::Schema.define(:version => 20120913004344) do
   create_table "days", :force => true do |t|
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
-    t.integer  "setting_id"
-    t.integer  "periods"
-    t.integer  "slots_per_period"
+    t.date     "date"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.integer  "period_length"
+    t.integer  "slots_per_period"
+    t.integer  "fund_id"
+  end
+
+  create_table "funds", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "title"
+    t.text     "headline"
+    t.text     "content"
+    t.integer  "admin_id"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "pledge_id"
+    t.integer  "product_id"
+    t.boolean  "filled"
+  end
+
+  create_table "pledges", :force => true do |t|
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "shipping_address1"
+    t.string   "shipping_address2"
+    t.string   "shipping_city"
+    t.string   "shipping_state"
+    t.string   "shipping_zipcode"
+    t.integer  "amount"
+    t.boolean  "opt_out"
   end
 
   create_table "products", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "name"
-    t.integer  "setting_id"
     t.integer  "amount"
-    t.integer  "icon_id"
+    t.integer  "fund_id"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -63,34 +97,19 @@ ActiveRecord::Schema.define(:version => 20120913004344) do
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
-  create_table "settings", :force => true do |t|
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.string   "name"
-    t.string   "title"
-    t.text     "content"
-    t.integer  "time_spots"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.integer  "register_price"
+  create_table "sponsors", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "fund_id"
+    t.string   "link_url"
   end
 
-  create_table "users", :force => true do |t|
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.text     "shipping_address1"
-    t.text     "shipping_address2"
-    t.string   "shipping_city"
-    t.string   "shipping_state"
-    t.string   "shipping_zipcode"
-    t.string   "kind"
-    t.integer  "amount"
-    t.boolean  "rider"
-    t.boolean  "sponsor"
-    t.boolean  "pledge"
-    t.integer  "time_slot"
+  create_table "timeslots", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "pledge_id"
+    t.integer  "day_id"
+    t.integer  "slot"
   end
 
 end
