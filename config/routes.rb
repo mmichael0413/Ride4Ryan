@@ -1,5 +1,9 @@
 Ride4Ryan::Application.routes.draw do
 
+  mount RailsAdmin::Engine => '/manage', :as => 'rails_admin'
+
+  devise_for :admins
+
   get "home/index"
 
   root :to => 'home#index'
