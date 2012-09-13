@@ -1,6 +1,7 @@
 class Setting < ActiveRecord::Base
   # attr_accessible :title, :body
   
-  has_many :days, :products
+  #has_many :days
+  #has_many :products
   
 end
