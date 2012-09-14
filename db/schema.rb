@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120913020539) do
+ActiveRecord::Schema.define(:version => 20120914010559) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20120913020539) do
     t.string   "shipping_zipcode"
     t.integer  "amount"
     t.boolean  "opt_out"
+    t.integer  "fund_id"
   end
 
   create_table "products", :force => true do |t|
@@ -110,6 +111,7 @@ ActiveRecord::Schema.define(:version => 20120913020539) do
     t.integer  "pledge_id"
     t.integer  "day_id"
     t.integer  "slot"
+    t.integer  "fund_id"
   end
 
 end
