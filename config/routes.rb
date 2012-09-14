@@ -1,6 +1,8 @@
 Ride4Ryan::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/manage', :as => 'rails_admin'
+  
+  match '/admins' => 'devise/sessions#new'
 
   devise_for :admins
 
@@ -8,10 +10,14 @@ Ride4Ryan::Application.routes.draw do
 
   root :to => 'home#index'
   
-  resources :users
+  resources :admins
   resources :days
+  resources :funds
+  resources :orders
+  resources :pledges
   resources :products
-  resources :settings
+  resources :sponsors
+  resources :timeslots
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
