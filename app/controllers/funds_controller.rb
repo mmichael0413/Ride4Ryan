@@ -1,5 +1,5 @@
 class FundsController < ApplicationController
-  before_filter :authenticate_admin!
+  before_filter :authenticate_admin!, :except => :index
   
   def index
     @funds = current_admin.funds
