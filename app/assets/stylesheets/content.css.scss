@@ -1,0 +1,9 @@
+@import "compass/css3";
+
+$background_color: #eaeef2;
+
+.main{
+  background-color: $background_color;
+  border-top:1px solid #fff;
+  height:900px;
+}

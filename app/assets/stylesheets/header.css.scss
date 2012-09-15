@@ -1,0 +1,10 @@
+@import "compass/css3";
+
+$dark_blue: #3587d4;
+$blue: #3d94e5;
+
+.header{
+  background-color:$blue;
+  height:360px;
+  border-top:6px solid $dark_blue;
+}
