@@ -8,3 +8,34 @@ $blue: #3d94e5;
   height:360px;
   border-top:6px solid $dark_blue;
 }
+
+.count_down{
+  color:#fff;
+  position: absolute;
+  right:40px;
+  width:200px;
+  @include border-radius(0 0 100px 100px);
+  background-color:$dark_blue;
+  text-align:center;
+
+  .days_left_num{
+    font-family: 'Pacifico', cursive;
+    font-size:220px;
+    margin-top:-164px;
+    display:block;
+  }
+  .days_left_text{
+    font-family: 'Pacifico', cursive;
+    font-size:30px;
+    margin-top:-90px;
+    display:block;
+  }
+  .days_left_date{
+    font-family: 'Open Sans', sans-serif;
+    font-weight:300;
+    font-size:12px;
+    margin:12px 0 30px;
+    display:block;
+    
+  }  
+}
