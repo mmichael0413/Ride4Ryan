@@ -11,8 +11,7 @@ $blue: #3d94e5;
 
 .count_down{
   color:#fff;
-  position: absolute;
-  right:40px;
+  float:right;
   width:200px;
   @include border-radius(0 0 100px 100px);
   background-color:$dark_blue;
@@ -36,6 +35,5 @@ $blue: #3d94e5;
     font-size:12px;
     margin:12px 0 30px;
     display:block;
-    
   }  
 }
