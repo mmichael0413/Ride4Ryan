@@ -1,0 +1,7 @@
+<% if @funds.empty? %>
+	<%= render 'form' %>
+<% else %>
+	<% @funds.each do |fund| %>
+		<h2><%= link_to fund.title, fund %></h2>
+	<% end %>
+<% end %>
