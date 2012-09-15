@@ -5,8 +5,38 @@ $blue: #3d94e5;
 
 .header{
   background-color:$blue;
-  height:360px;
+  height:370px;
   border-top:6px solid $dark_blue;
+  position:absolute;
+  width:100%;
+}
+.logo{
+  color: #eaeef2;
+  font-family: 'Pacifico', cursive;  
+  position:absolute;
+  bottom:20px;
+  font-size:40px;
+  span{
+    display:inline-block;
+  }
+  .num{
+    font-size:300%;
+    letter-spacing:-4px;
+    line-height:85px;
+  }
+  .first{
+    letter-spacing:-2px;
+  }
+}
+
+.spin_signup_text{
+  font-family: 'Pacifico', cursive;  
+  color:#fff;
+  position:relative;
+  font-size:24px;
+  top:310px;
+  float:right;
+  margin-right:-155px;
 }
 
 .count_down{
