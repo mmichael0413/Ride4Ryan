@@ -1,0 +1,19 @@
+@import "compass/css3";
+
+$background_color: #dae0e6;
+
+.footer{
+  background-color: $background_color;
+  height:300px;
+  padding:25px 40px
+}
+.sponsor_text{
+  font-size:30px;
+  font-weight:300;
+  color:#3d566e;
+}
+.contact_host{
+  float:right;
+  width:200px;
+  font-size:12px;
+}
