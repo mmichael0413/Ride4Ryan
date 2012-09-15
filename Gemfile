@@ -7,6 +7,11 @@ gem 'rails', '3.2.6'
 
 gem 'pg'
 gem 'rails_admin'
+gem 'devise'
+
+group :test, :development do
+  gem 'rspec-rails', '~> 2.0'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -36,5 +41,3 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
-
-gem "devise"
