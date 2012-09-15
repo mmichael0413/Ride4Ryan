@@ -1,0 +1,70 @@
+@import "compass/css3";
+
+$dark_blue: #3587d4;
+$blue: #3d94e5;
+
+.header{
+  background-color:$blue;
+  height:370px;
+  border-top:6px solid $dark_blue;
+  position:relative;
+  width:100%;
+}
+.logo{
+  color: #eaeef2;
+  font-family: 'Pacifico', cursive;  
+  position:absolute;
+  bottom:20px;
+  font-size:40px;
+  span{
+    display:inline-block;
+  }
+  .num{
+    font-size:300%;
+    letter-spacing:-4px;
+    line-height:85px;
+  }
+  .first{
+    letter-spacing:-2px;
+  }
+}
+
+.spin_signup_text{
+  font-family: 'Pacifico', cursive;  
+  color:#fff;
+  position:relative;
+  font-size:24px;
+  top:310px;
+  float:right;
+  margin-right:-159px;
+}
+
+.count_down{
+  color:#fff;
+  float:right;
+  width:200px;
+  margin-right:28px;
+  @include border-radius(0 0 100px 100px);
+  background-color:$dark_blue;
+  text-align:center;
+
+  .days_left_num{
+    font-family: 'Pacifico', cursive;
+    font-size:220px;
+    margin-top:-164px;
+    display:block;
+  }
+  .days_left_text{
+    font-family: 'Pacifico', cursive;
+    font-size:30px;
+    margin-top:-90px;
+    display:block;
+  }
+  .days_left_date{
+    font-family: 'Open Sans', sans-serif;
+    font-weight:300;
+    font-size:12px;
+    margin:12px 0 30px;
+    display:block;
+  }  
+}

@@ -1,0 +1,26 @@
+@import "compass/css3";
+
+$dark_blue: #3587d4;
+$blue: #3d94e5;
+
+html, body{
+  margin:0;
+  padding:0;
+  height:100%;
+  width:100%;
+  font-family:'Open Sans', sans-serif;
+  color:#12497b;
+}
+h1{
+  font-family: 'Pacifico', cursive;
+  color:$blue;
+}
+h2{
+  font-family: 'Pacifico', cursive;
+  color:$blue;  
+  margin:30px 0 0 0;
+}
+.container{
+  width:1160px;
+  margin:auto;
+}

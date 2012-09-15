@@ -1,0 +1,79 @@
+@import "compass/css3";
+$light_blue:#c0cddb;
+
+.slot_list{
+  background:#fff;
+  height:500px;
+  width:250px;
+  float:right;
+  margin:-34px 0 0 40px;
+  @include box-shadow(0 4px 10px 0px #133654, inset 0 2px 3px 0 #e0e0e0);
+  position:relative;
+
+  .day{
+    color:$light_blue;
+    display:block;
+    text-align:center;
+    margin:10px 0;
+  }
+
+  ul{
+    list-style:none;
+    padding:0;
+    margin:0 20px;
+    display:table;
+    width:210px;
+    font-size:14px;
+
+    li{
+      display:table-row;
+
+      span{
+        border-bottom:1px solid $light_blue;
+        padding:8px 0;
+        display:table-cell;
+      }
+    }
+  }
+}
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 0px solid transparent;
+  border-right: 6px solid #133654;
+  margin: 0px 0 0 -6px;
+}
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 0px solid transparent;
+  border-left: 6px solid #133654;
+  margin: -5px -6px 0 0;
+  float:right;
+}
+.list_footer{
+  height:10px;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  padding:0 0 0 1px;
+  margin-bottom:-10px;
+
+  ul{
+    list-style:none;
+    padding:0px;
+    width:250px;
+    margin:0px;
+
+    li{
+      width: 0;
+      height: 0;
+      border-top: 10px solid #fff;
+      border-right: 10px solid transparent;
+      border-left: 9px solid transparent;
+      float:left;
+    }
+  }
+}
