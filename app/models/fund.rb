@@ -1,5 +1,5 @@
 class Fund < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :title, :headline, :content
   
   belongs_to :admin
   has_many :days

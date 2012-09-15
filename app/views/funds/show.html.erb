@@ -1,0 +1,15 @@
+<p>
+  <b><strong><h1><%= @fund.title %></h1></strong></b>
+</p>
+ 
+<p>
+  <b><h2><i><%= @fund.headline %></i></h2></b>
+</p>
+ 
+<p>
+  <b><%= @fund.content %></b>
+</p>
+ 
+ 
+<%= link_to 'Edit', edit_fund_path(@fund) %>	|
+<%= link_to 'Back', funds_path %>
