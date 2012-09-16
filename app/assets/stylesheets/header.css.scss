@@ -28,6 +28,22 @@ $blue: #3d94e5;
     letter-spacing:-2px;
   }
 }
+.raised{
+  position:absolute;
+  top:20px;
+  background:$dark_blue;
+  padding:0px 13px;
+  @include border-radius(30px);
+  width:300px;
+  color:#fff;
+  font-family:'Pacifico';
+  font-size:20px;
+  line-height:45px;
+
+  .amount{
+    float:right;
+  }
+}
 
 .spin_signup_text{
   font-family: 'Pacifico', cursive;  

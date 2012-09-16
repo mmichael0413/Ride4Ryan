@@ -14,6 +14,12 @@ $background_color: #dae0e6;
 }
 .contact_host{
   float:right;
-  width:200px;
+  width:222px;
   font-size:12px;
+  background-color:#a9b4bf;
+  padding:10px 14px;
+  margin:0 0 0;
+  color:#fff;
+  text-align:center;
+  @include border-radius(20px);
 }
