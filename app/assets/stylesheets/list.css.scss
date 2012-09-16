@@ -1,5 +1,6 @@
 @import "compass/css3";
 $light_blue:#c0cddb;
+$orange: #db5d00;
 
 .slot_list{
   background:#fff;
@@ -27,6 +28,12 @@ $light_blue:#c0cddb;
 
     li{
       display:table-row;
+      .reg:hover{
+        color:$light_blue;
+      }
+      .reg:active{
+        color:$orange;
+      }
 
       span{
         border-bottom:1px solid $light_blue;

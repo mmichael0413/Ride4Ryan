@@ -1,4 +1,6 @@
 @import "compass/css3";
+$light_blue:#c0cddb;
+$orange:#db5d00;
 
 .modal_bg{
   height:100%;
@@ -39,6 +41,12 @@
       line-height:40px;
       margin-right:10px;
       cursor:pointer;
+    }
+    .modal-link-close:hover{
+      color:$light_blue;
+    }
+    .modal-link-close:active{
+      color:$orange;
     }
   }
 }
