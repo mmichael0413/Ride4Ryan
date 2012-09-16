@@ -6,7 +6,7 @@ $light_blue:#c0cddb;
   height:500px;
   width:250px;
   float:right;
-  margin:-34px 0 0 40px;
+  margin:-35px 0 0 40px;
   @include box-shadow(0 4px 10px 0px #133654, inset 0 2px 3px 0 #e0e0e0);
   position:relative;
 
@@ -35,6 +35,9 @@ $light_blue:#c0cddb;
       }
     }
   }
+}
+.modal-link{
+  cursor:pointer;
 }
 .arrow-left {
   width: 0;
