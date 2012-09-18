@@ -11,9 +11,9 @@
   <div class="header">
     <div class="container">
       <div class="raised">
-        Raised so far
+        Raised so far 
         <div class="amount">
-          $10,002
+          $<%= @fund.total_raised %>
         </div>
       </div>
       <div class="logo">
@@ -21,7 +21,7 @@
       </div>
       <div class="count_down">
         <span class="days_left_num">
-          33
+          <%= @fund.days_left %>
         </span>
         <span class="days_left_text">
           daystogo

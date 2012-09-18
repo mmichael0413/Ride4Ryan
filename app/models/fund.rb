@@ -12,8 +12,16 @@ class Fund < ActiveRecord::Base
   
   #Calculate number of available time slots based on data from Day table
   def self.number_of_timeslots_available(fund)
-    start_time = Day.where(:fund_id => fund).map(:start_time)
-    return start_time
+    start_time = Day.find_by_id(fund).start_time
+    return start_time.to_time
   end
   
+  def total_raised
+    self.pledges.sum(:amount)
+  end
+  
+  def days_left
+    
+  end
+
 end
