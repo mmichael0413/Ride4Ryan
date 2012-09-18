@@ -21,7 +21,11 @@ class Fund < ActiveRecord::Base
   end
   
   def days_left
-    
+    (self.start_date - Date.today).to_i
+  end
+  
+  def start_date
+    self.days.order('created_at ASC').first.date
   end
 
 end
