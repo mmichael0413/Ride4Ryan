@@ -28,21 +28,29 @@ class Fund < ActiveRecord::Base
     self.days.order('created_at ASC').first.date
   end
   
-  def fund_times(day)    
-    #Calculate periods per day
+  #Returns the periods per day
+  def periods_per_day(day)
     hours_per_day = day.end_time.to_time.hour - day.start_time.to_time.hour
     periods_per_hour = 60 / day.period_length
     
     periods_per_day = hours_per_day * periods_per_hour
-    
-    #Declare empty array for times
+  end
+  
+  #Returns an array of registration times for a given fund's day
+  def fund_times(day)    
     times = []
     
-    periods_per_day.to_i.times do |i| 
+    periods_per_day(day).to_i.times do |i| 
       times[i] = (day.start_time + (i * day.period_length * 60)).to_time
     end
 
     return times
+  end
+  
+  def available_slots(day, period)
+    #Calculate total slots for a given day
+    total_slots = periods_per_day(day) * day.slots_per_period
+    
   end
 
 end
