@@ -40,7 +40,7 @@
       <div class="slot_list">
         <div class="arrow-left"></div>
         <div class="arrow-right"></div>
-        <span class="day">October 28th, 2012</span>
+        <span class="day"><%= @fund.start_date.strftime('%b %dth, %Y')%></span>
         <ul>
           <li>
             <span>9:00AM</span>
@@ -83,38 +83,22 @@
       </div>
       <div class="left_content">
         <div class="about">
-          <h1>A son, husband, and father</h1>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a feugiat felis. Praesent mollis tellus tristique nisl consequat sed vestibulum magna aliquam. Ut pharetra placerat nulla, et condimentum justo blandit eget. Vivamus purus dolor, molestie et scelerisque non, tincidunt sed leo. Aenean ultrices pellentesque neque sed euismod. Ut quis lacinia elit. Ut aliquet molestie quam non pretium. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed velit felis, fermentum iaculis mollis in, eleifend ac nibh. Praesent in tellus faucibus ante auctor sodales eu vel felis. Sed molestie nibh at tortor venenatis porttitor. Aliquam erat volutpat. Nullam eu nisl nisi. Vestibulum a fermentum lorem. Proin blandit iaculis ornare.
-
-          Donec sit amet mi lacus, non consequat mi. Curabitur in lobortis ante. Mauris non iaculis ligula. Nunc vehicula nibh et arcu facilisis feugiat. Sed non felis et nisl euismod dignissim ut aliquam enim. In euismod urna sit amet nulla porttitor in luctus turpis imperdiet. Nulla vel erat mi, nec interdum ligula.
+          <h1><%= @fund.headline %></h1>
+          <%= @fund.content %>
         </div>
         <div class="products">
           <ul>
+			<% @fund.products.each do |p| %>
             <li>
-              <h2>Wrist Band!</h2>
+              <h2><%= p.name %></h2>
               <div class="product_box">
                 <div class="image"></div>
                 <span class="dollar_sign">$</span>
-                <span class="dollar_num">20+</span>
+                <span class="dollar_num"><%= p.amount %>+</span>
               </div>
             </li>
-            <li>
-              <h2>T-Shirt!</h2>
-              <div class="product_box">
-                <div class="image"></div>
-                <span class="dollar_sign">$</span>
-                <span class="dollar_num">50+</span>
-              </div>
-            </li>
-            <li>
-              <h2>Everything!</h2>
-              <div class="product_box">
-                <div class="image"></div>
-                <span class="dollar_sign">$</span>
-                <span class="dollar_num">100+</span>
-              </div>
-            </li>
-          </ul>
+			<% end %>
+            </ul>
           <div class="donation_container">
             <div class="donation_text">
               <strong>Any donations is appreciated</strong>, but the more you give, the more you get!
