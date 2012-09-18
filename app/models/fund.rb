@@ -1,5 +1,5 @@
 class Fund < ActiveRecord::Base
-  attr_accessible :title, :headline, :content, :location
+  attr_accessible :title, :headline, :content, :location, :blurb
   
   validates_presence_of :title, :headline, :content
   
@@ -26,6 +26,23 @@ class Fund < ActiveRecord::Base
   
   def start_date
     self.days.order('created_at ASC').first.date
+  end
+  
+  def fund_times(day)    
+    #Calculate periods per day
+    hours_per_day = day.end_time.to_time.hour - day.start_time.to_time.hour
+    periods_per_hour = 60 / day.period_length
+    
+    periods_per_day = hours_per_day * periods_per_hour
+    
+    #Declare empty array for times
+    times = []
+    
+    periods_per_day.to_i.times do |i| 
+      times[i] = (day.start_time + (i * day.period_length * 60)).to_time
+    end
+
+    return times
   end
 
 end
