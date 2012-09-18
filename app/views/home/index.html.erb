@@ -46,7 +46,7 @@
           <li>
             <span><%= t.strftime('%l:%M %p') %></span>
             <span><div class="reg modal-link">Register</div></span>
-            <span><%= @fund.available_slots(@fund.days.first, 1) %> spots</span>
+            <span><%= @fund.available_slots(@fund.days.first, 1)%> spots</span>
           </li>
 		<% end %>
         </ul>
