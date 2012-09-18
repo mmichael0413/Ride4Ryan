@@ -2,8 +2,6 @@ Ride4Ryan::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/manage', :as => 'rails_admin'
   
-  match '/admins' => 'devise/sessions#new'
-
   devise_for :admins
 
   get "home/index"
