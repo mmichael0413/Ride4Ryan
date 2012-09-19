@@ -1,9 +1,26 @@
 class PledgesController < ApplicationController
+  def new
+    @pledge = Pledge.new
+    
+    respond_to do |format|
+      format.html  # new.html.erb
+      format.json  { render :json => @pledge }
+    end
+  end
   
   def create
-    @fund = Fund.find(params[:fund_id])
+    @fund = Fund.find_by_id(1)
     @pledge = @fund.pledges.create(params[:pledge])
-    redirect_to fund_path(@fund)
+    
+    respond_to do |format|
+      if @pledge.save
+        format.html  { redirect_to(@fund, :notice => 'Pledge was successfully created.') }
+        format.json  { render :json => @pledge, :status => :created, :location => @pledge }
+      else
+        format.html  { render :action => "new" }
+        format.json  { render :json => @pledge.errors, :status => :unprocessable_entity }
+      end
+    end
   end
 
 end

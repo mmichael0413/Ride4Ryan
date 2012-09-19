@@ -1,4 +1,4 @@
-<%= form_for([@fund, @fund.pledges.build]) do |pledge_form| %>
+<%= form_for @pledge do |pledge_form| %>
 	<div class="field">
 		<%= pledge_form.label :first_name %><br>
 		<%= pledge_form.text_field :first_name %>
@@ -10,27 +10,27 @@
 	</div>
 	
 	<div class="field">
-		<%= pledge_form.label :shipping_address1 %><br>
+		<%= pledge_form.label :shipping_address1, "Address 1" %><br>
 		<%= pledge_form.text_field :shipping_address1 %>
 	</div>
 	
 	<div class="field">
-		<%= pledge_form.label :shipping_address2 %><br>
+		<%= pledge_form.label :shipping_address2, "Address 2" %><br>
 		<%= pledge_form.text_field :shipping_address2 %>
 	</div>
 	
 	<div class="field">
-		<%= pledge_form.label :shipping_city %><br>
+		<%= pledge_form.label :shipping_city, "City" %><br>
 		<%= pledge_form.text_field :shipping_city %>
 	</div>
 	
 	<div class="field">
-		<%= pledge_form.label :shipping_state %><br>
+		<%= pledge_form.label :shipping_state, "State" %><br>
 		<%= pledge_form.text_field :shipping_state %>
 	</div>
 	
 	<div class="field">
-		<%= pledge_form.label :shipping_zipcode %><br>
+		<%= pledge_form.label :shipping_zipcode, "Zipcode" %><br>
 		<%= pledge_form.text_field :shipping_zipcode %>
 	</div>
 	
