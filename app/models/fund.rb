@@ -50,7 +50,9 @@ class Fund < ActiveRecord::Base
   def available_slots(day, period)
     #Calculate total slots for a given day
     total_slots = periods_per_day(day) * day.slots_per_period
+    existing_timeslots = self.timeslots.all
     
+    return day.slots_per_period - existing_timeslots.count
   end
 
 end

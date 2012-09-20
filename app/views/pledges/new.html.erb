@@ -1,5 +1,104 @@
-<h1>New Spinning Registration</h1>
+<h1>New Pledge Form</h1>
 
-<%= render 'form' %>
+<%= form_for [:fund, @pledge] do |pledge_form| %>
+	<div class="field">
+		<%= pledge_form.label :first_name %><br>
+		<%= pledge_form.text_field :first_name %>
+	</div>
+	
+	<div class="field">
+		<%= pledge_form.label :last_name %><br>
+		<%= pledge_form.text_field :last_name %>
+	</div>
+	
+	<div class="field">
+		<%= pledge_form.label :shipping_address1, "Address 1" %><br>
+		<%= pledge_form.text_field :shipping_address1 %>
+	</div>
+	
+	<div class="field">
+		<%= pledge_form.label :shipping_address2, "Address 2" %><br>
+		<%= pledge_form.text_field :shipping_address2 %>
+	</div>
+	
+	<div class="field">
+		<%= pledge_form.label :shipping_city, "City" %><br>
+		<%= pledge_form.text_field :shipping_city %>
+	</div>
+	
+	<div class="field">
+		<%= pledge_form.label :shipping_state, "State" %><br>
+		<%= pledge_form.text_field :shipping_state %>
+	</div>
+	
+	<div class="field">
+		<%= pledge_form.label :shipping_zipcode, "Zipcode" %><br>
+		<%= pledge_form.text_field :shipping_zipcode %>
+	</div>
+	
+	<div class="field">
+		<%= pledge_form.label :amount %><br>
+		<%= pledge_form.text_field :amount %>
+	</div>
+	
+	<div class="field">
+		<%= pledge_form.check_box :opt_out %>
+		<%= pledge_form.label :opt_out, "Would you like to donate without getting goodies?" %>
+	</div>
+
+	<div class="actions">
+	  <%= pledge_form.submit %>
+	</div>
+	
+<% end %>
+
+<h1>New Registration Form</h1>
+
+<%= form_for [:fund, @pledge] do |reg_form| %>
+	<%= fields_for @pledge.timeslots.build do |slot_form| %>
+		<%= slot_form.label :slot %>
+		<%= slot_form.text_field :slot %>
+	<% end %>
+	
+	<div class="field">
+		<%= reg_form.label :first_name %><br>
+		<%= reg_form.text_field :first_name %>
+	</div>
+	
+	<div class="field">
+		<%= reg_form.label :last_name %><br>
+		<%= reg_form.text_field :last_name %>
+	</div>
+	
+	<div class="field">
+		<%= reg_form.label :shipping_address1, "Address 1" %><br>
+		<%= reg_form.text_field :shipping_address1 %>
+	</div>
+	
+	<div class="field">
+		<%= reg_form.label :shipping_address2, "Address 2" %><br>
+		<%= reg_form.text_field :shipping_address2 %>
+	</div>
+	
+	<div class="field">
+		<%= reg_form.label :shipping_city, "City" %><br>
+		<%= reg_form.text_field :shipping_city %>
+	</div>
+	
+	<div class="field">
+		<%= reg_form.label :shipping_state, "State" %><br>
+		<%= reg_form.text_field :shipping_state %>
+	</div>
+	
+	<div class="field">
+		<%= reg_form.label :shipping_zipcode, "Zipcode" %><br>
+		<%= reg_form.text_field :shipping_zipcode %>
+	</div>
+
+	<div class="actions">
+	  <%= reg_form.submit %>
+	</div>
+	
+<% end %>
 
 <%= link_to 'Back', funds_path %>

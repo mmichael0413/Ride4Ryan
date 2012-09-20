@@ -9,13 +9,20 @@ Ride4Ryan::Application.routes.draw do
   root :to => 'home#index'
   
   resources :admins
-  resources :days
-  resources :funds
-  resources :orders
-  resources :pledges
-  resources :products
-  resources :sponsors
-  resources :timeslots
+  
+  resources :funds do
+    resources :days do
+      resources :timeslot
+    end
+  
+    resources :pledges
+    resources :sponsors
+    
+    resources :products do
+      resources :orders
+    end
+    
+  end
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
