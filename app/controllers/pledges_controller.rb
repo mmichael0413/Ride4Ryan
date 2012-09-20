@@ -1,6 +1,9 @@
 class PledgesController < ApplicationController
   def new
-    @pledge = Pledge.new
+    @day = Day.find_by_id(1)
+    @fund = Fund.find(params[:fund_id])
+    @pledge = @fund.pledges.build
+    @order = Order.new
     
     respond_to do |format|
       format.html  # new.html.erb
@@ -11,6 +14,7 @@ class PledgesController < ApplicationController
   def create
     @fund = Fund.find_by_id(1)
     @pledge = @fund.pledges.create(params[:pledge])
+    @timeslot = @pledge.timeslot.build
     
     respond_to do |format|
       if @pledge.save

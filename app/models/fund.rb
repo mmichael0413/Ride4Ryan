@@ -47,10 +47,16 @@ class Fund < ActiveRecord::Base
     return times
   end
   
-  def available_slots(day, period)
-    #Calculate total slots for a given day
-    total_slots = periods_per_day(day) * day.slots_per_period
+  #Return an array of available timeslots
+  def available_slots(day)
+    slots = []
     
+    fund_times(day).size.times do |i|
+      existing_slots = Timeslot.where(:period => (i + 1)).map(&:slot).count
+      slots[i] = day.slots_per_period - existing_slots
+    end
+    
+    return slots
   end
 
 end
