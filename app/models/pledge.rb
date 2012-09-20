@@ -28,11 +28,5 @@ class Pledge < ActiveRecord::Base
         
       order.save
     end
-    
-    #If the pledge registers for a timeslot, 
-    if self.timeslots
-      self.amount = self.fund.registration_fee
-      
-    end
   end
 end

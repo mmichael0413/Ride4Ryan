@@ -56,8 +56,10 @@
 
 <%= form_for [:fund, @pledge] do |reg_form| %>
 	<%= fields_for @pledge.timeslots.build do |slot_form| %>
-		<%= slot_form.label :slot %>
-		<%= slot_form.text_field :slot %>
+		<div class="field">
+			<%= slot_form.label :period %><br>
+			<%= slot_form.text_field :period %>
+		</div>
 	<% end %>
 	
 	<div class="field">
