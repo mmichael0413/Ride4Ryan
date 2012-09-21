@@ -11,10 +11,7 @@ Ride4Ryan::Application.routes.draw do
   resources :admins
   
   resources :funds do
-    resources :days do
-      resources :timeslot
-    end
-  
+    resources :days
     resources :pledges
     resources :sponsors
     

@@ -55,7 +55,7 @@
 <h1>New Registration Form</h1>
 
 <%= form_for [:fund, @pledge] do |reg_form| %>
-	<%= fields_for @pledge.timeslots.build do |slot_form| %>
+	<%= reg_form.fields_for :timeslot_attributes do |slot_form| %>
 		<div class="field">
 			<%= slot_form.label :period %><br>
 			<%= slot_form.text_field :period %>

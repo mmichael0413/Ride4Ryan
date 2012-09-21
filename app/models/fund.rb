@@ -8,7 +8,6 @@ class Fund < ActiveRecord::Base
   has_many :products, :dependent => :destroy
   has_many :sponsors, :dependent => :destroy
   has_many :pledges
-  has_many :timeslots
   
   #Calculate number of available time slots based on data from Day table
   def self.number_of_timeslots_available(fund)

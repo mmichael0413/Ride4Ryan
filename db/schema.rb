@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120920032320) do
+ActiveRecord::Schema.define(:version => 20120921032633) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(:version => 20120920032320) do
     t.integer  "amount"
     t.boolean  "opt_out"
     t.integer  "fund_id"
+    t.integer  "slot"
+    t.integer  "period"
   end
 
   create_table "products", :force => true do |t|
@@ -106,16 +108,6 @@ ActiveRecord::Schema.define(:version => 20120920032320) do
     t.datetime "updated_at", :null => false
     t.integer  "fund_id"
     t.string   "link_url"
-  end
-
-  create_table "timeslots", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "pledge_id"
-    t.integer  "day_id"
-    t.integer  "slot"
-    t.integer  "fund_id"
-    t.integer  "period"
   end
 
 end

@@ -1,10 +1,7 @@
 class PledgesController < ApplicationController
   def new
-    @day = Day.find_by_id(1)
-    @fund = Fund.find(params[:fund_id])
-    @pledge = @fund.pledges.build
-    @order = Order.new
-    
+    @pledge = Pledge.new
+
     respond_to do |format|
       format.html  # new.html.erb
       format.json  { render :json => @pledge }
@@ -12,9 +9,8 @@ class PledgesController < ApplicationController
   end
   
   def create
-    @fund = Fund.find_by_id(1)
+    @fund = Fund.find(params[:fund_id])
     @pledge = @fund.pledges.create(params[:pledge])
-    @timeslot = @pledge.timeslot.build
     
     respond_to do |format|
       if @pledge.save
