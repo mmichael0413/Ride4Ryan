@@ -1,5 +1,5 @@
 class Fund < ActiveRecord::Base
-  attr_accessible :title, :headline, :content, :location, :blurb
+  attr_accessible :title, :headline, :content, :location, :blurb, :registration_fee
   
   validates_presence_of :title, :headline, :content
   
@@ -57,6 +57,11 @@ class Fund < ActiveRecord::Base
     end
     
     return slots
+  end
+  
+  def times_and_slots(day)
+    times_and_slots = {}
+    
   end
 
 end
