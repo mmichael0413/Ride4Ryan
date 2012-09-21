@@ -45,8 +45,8 @@
 		<% @fund.fund_times(@fund.days.first).each do |t| %>
           <li>
             <span><%= t.strftime('%l:%M %p') %></span>
-            <span><div class="reg modal-link"><%= link_to 'Register', new_pledge_path %></div></span>
-            <span><%= @fund.available_slots(@fund.days.first, 1)%> spots</span>
+            <span><div class="reg modal-link"><%= link_to 'Register', new_fund_pledge_path(@fund) %></div></span>
+            <span><%= @fund.available_slots(@fund.days.first) %> spots</span>
           </li>
 		<% end %>
         </ul>
