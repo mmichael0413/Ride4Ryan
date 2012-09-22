@@ -55,12 +55,6 @@
 <h1>New Registration Form</h1>
 
 <%= form_for [:fund, @pledge] do |reg_form| %>
-	<%= reg_form.fields_for :timeslot_attributes do |slot_form| %>
-		<div class="field">
-			<%= slot_form.label :period %><br>
-			<%= slot_form.text_field :period %>
-		</div>
-	<% end %>
 	
 	<div class="field">
 		<%= reg_form.label :first_name %><br>
@@ -95,6 +89,11 @@
 	<div class="field">
 		<%= reg_form.label :shipping_zipcode, "Zipcode" %><br>
 		<%= reg_form.text_field :shipping_zipcode %>
+	</div>
+	
+	<div class="field">
+		<%= reg_form.label :period %><br>
+		<%= reg_form.text_field :period %>
 	</div>
 
 	<div class="actions">
