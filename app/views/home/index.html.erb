@@ -27,7 +27,8 @@
           daystogo
         </span>
         <span class="days_left_date">
-          <%= @fund.start_date.strftime('%b %dth, %l:%M %p')%>
+          <%= @fund.start_date.strftime('%b %dth') %>,
+		  <%= @fund.start_time.strftime('%l:%M %p') %>
         </span>
       </div>
       <div class="spin_signup_text">
@@ -42,11 +43,11 @@
         <div class="arrow-right"></div>
         <span class="day"><%= @fund.start_date.strftime('%b %dth, %Y')%></span>
         <ul>
-		<% @fund.fund_times(@fund.days.first).each do |t| %>
+		<% @fund.times_and_slots(@fund.days.first).each do |t| %>
           <li>
-            <span><%= t.strftime('%l:%M %p') %></span>
+            <span><%= t[0].strftime('%l:%M %p') %></span>
             <span><div class="reg modal-link"><%= link_to 'Register', new_fund_pledge_path(@fund) %></div></span>
-            <span> spots</span>
+            <span><%= t[2] %>spots</span>
           </li>
 		<% end %>
         </ul>
