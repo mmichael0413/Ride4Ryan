@@ -55,7 +55,6 @@
 <h1>New Registration Form</h1>
 
 <%= form_for [:fund, @pledge] do |reg_form| %>
-	
 	<div class="field">
 		<%= reg_form.label :first_name %><br>
 		<%= reg_form.text_field :first_name %>
@@ -94,6 +93,11 @@
 	<div class="field">
 		<%= reg_form.label :period %><br>
 		<%= reg_form.text_field :period %>
+	</div>
+	
+	<div class="field">
+		<%= reg_form.label :day_id %><br>
+		<%= reg_form.text_field :day_id %>
 	</div>
 
 	<div class="actions">
