@@ -8,6 +8,7 @@ gem 'rails', '3.2.6'
 gem 'pg'
 gem 'rails_admin'
 gem 'devise'
+gem 'paperclip', '~> 3.0'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'
