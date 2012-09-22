@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120921032633) do
+ActiveRecord::Schema.define(:version => 20120922143624) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20120921032633) do
     t.integer  "fund_id"
     t.integer  "slot"
     t.integer  "period"
+    t.integer  "day_id"
   end
 
   create_table "products", :force => true do |t|

@@ -24,7 +24,11 @@ class Fund < ActiveRecord::Base
   end
   
   def start_date
-    self.days.order('created_at ASC').first.date
+    self.days.order('date ASC').first.date
+  end
+  
+  def start_time
+    self.days.order('date ASC').first.start_time
   end
   
   #Returns the periods per day
@@ -47,20 +51,17 @@ class Fund < ActiveRecord::Base
   end
   
   #Return an array of available timeslots
-  def available_slots(day)
-    slots = []
+  def times_and_slots(day)
+    times_and_slots = []
+    times = fund_times(day)
     
-    fund_times(day).size.times do |i|
-      existing_slots = Timeslot.where(:period => (i + 1)).map(&:slot).count
-      slots[i] = day.slots_per_period - existing_slots
+    times.size.times do |t|
+      slots_count = self.pledges.where(:day_id => day.id, :period => (t+1)).count
+      puts slots_count
+      times_and_slots[t] = [times[t], t + 1, day.slots_per_period - slots_count]
     end
     
-    return slots
-  end
-  
-  def times_and_slots(day)
-    times_and_slots = {}
-    
+    return times_and_slots
   end
 
 end
