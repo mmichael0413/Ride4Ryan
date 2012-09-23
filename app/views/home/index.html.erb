@@ -84,21 +84,23 @@
       </div>
       <div class="left_content">
         <div class="about">
-          <h1><%= @fund.headline %></h1>
-          <%= @fund.content %>
+          <h1>
+            <%= @fund.headline %>
+          </h1>
+          <%= raw markdown.render(@fund.content) %>
         </div>
         <div class="products">
           <ul>
-			<% @fund.products.order('amount ASC').each do |p| %>
-            <li>
-              <h2><%= p.name %></h2>
-              <div class="product_box">
-                <div class="image"></div>
-                <span class="dollar_sign">$</span>
-                <span class="dollar_num"><%= p.amount %>+</span>
-              </div>
-            </li>
-			<% end %>
+            <% @fund.products.order('amount ASC').each do |p| %>
+              <li>
+                <h2><%= p.name %></h2>
+                <div class="product_box">
+                  <div class="image"></div>
+                  <span class="dollar_sign">$</span>
+                  <span class="dollar_num"><%= p.amount %>+</span>
+                </div>
+              </li>
+            <% end %>
             </ul>
           <div class="donation_container">
             <div class="donation_text">
