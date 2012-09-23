@@ -28,6 +28,9 @@ $orange: #db5d00;
 
     li{
       display:table-row;
+      .reg{
+        font-weight:700;
+      }
       .reg:hover{
         color:$light_blue;
       }

@@ -4,10 +4,10 @@
     <h2>Title</h2>
   </div>
   <div class="modal_content modal_donate">
-    <%= render 'donate' %>
+    <%= render 'donate', :fund => @fund, :pledge => @pledge %>
   </div>
   <div class="modal_content modal_register">
-    <%= render 'register' %>
+    <%= render 'register', :fund => @fund, :pledge => @pledge %>
   </div>
 </div>
 <div class="modal_bg">
@@ -48,13 +48,21 @@
         <div class="arrow-right"></div>
         <span class="day"><%= @fund.start_date.strftime('%b %dth, %Y')%></span>
         <ul>
-		<% @fund.times_and_slots(@fund.days.first).each do |t| %>
-          <li>
-            <span><%= t[0].strftime('%l:%M %p') %></span>
-            <span><div class="reg modal-link"><%= link_to 'Register', new_fund_pledge_path(@fund) %></div></span>
-            <span><%= t[2] %>spots</span>
-          </li>
-		<% end %>
+          <% @fund.times_and_slots(@fund.days.first).each do |t| %>
+            <li>
+              <span>
+                <%= t[0].strftime('%l:%M %p') %>
+              </span>
+              <span>
+                <div class="reg modal-link" data-target="modal_register">
+                 Register 
+                </div>
+              </span>
+              <span>
+                <%= t[2] %> spots
+              </span>
+            </li>
+          <% end %>
         </ul>
         <div class="list_footer">
           <ul>
@@ -97,7 +105,7 @@
               <strong>Any donations is appreciated</strong>, but the more you give, the more you get!
             </div>
             <div class="donation_form">
-              <div class="good_karma_button modal-link">Good Karma :)</div>
+              <div class="good_karma_button modal-link" data-target="modal_donate">Good Karma :)</div>
               <input type="text" class="pledge_amount" placeholder="0">
               $
             </div>
