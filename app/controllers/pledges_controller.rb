@@ -11,16 +11,14 @@ class PledgesController < ApplicationController
   def create
     @fund = Fund.find(params[:fund_id])
     @pledge = @fund.pledges.create(params[:pledge])
-    
-    respond_to do |format|
-      if @pledge.save
-        format.html  { redirect_to(@fund, :notice => 'Pledge was successfully created.') }
-        format.json  { render :json => @pledge, :status => :created, :location => @pledge }
-      else
-        format.html  { render :action => "new" }
-        format.json  { render :json => @pledge.errors, :status => :unprocessable_entity }
-      end
+    if @pledge.period
+      @pledge_kind = "Registering"
+    else
+      @pledge_kind = "Donating"
     end
+    respond_to do |format|
+      format.js { render :pledge_kind => @pledge_kind }
+    end    
   end
 
 end

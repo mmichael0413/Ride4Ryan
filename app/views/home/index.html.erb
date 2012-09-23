@@ -3,7 +3,12 @@
     <span class="modal-link-close">close</span>
     <h2>Title</h2>
   </div>
-  <div class="modal_content"></div>
+  <div class="modal_content modal_donate">
+    <%= render 'donate', :fund => @fund, :pledge => @pledge %>
+  </div>
+  <div class="modal_content modal_register">
+    <%= render 'register', :fund => @fund, :pledge => @pledge %>
+  </div>
 </div>
 <div class="modal_bg">
 </div>
@@ -43,13 +48,21 @@
         <div class="arrow-right"></div>
         <span class="day"><%= @fund.start_date.strftime('%b %dth, %Y')%></span>
         <ul>
-		<% @fund.times_and_slots(@fund.days.first).each do |t| %>
-          <li>
-            <span><%= t[0].strftime('%l:%M %p') %></span>
-            <span><div class="reg modal-link"><%= link_to 'Register', new_fund_pledge_path(@fund) %></div></span>
-            <span><%= t[2] %>spots</span>
-          </li>
-		<% end %>
+          <% @fund.times_and_slots(@fund.days.first).each do |t| %>
+            <li>
+              <span>
+                <%= t[0].strftime('%l:%M %p') %>
+              </span>
+              <span>
+                <div class="reg modal-link" data-target="modal_register">
+                 Register 
+                </div>
+              </span>
+              <span>
+                <%= t[2] %> spots
+              </span>
+            </li>
+          <% end %>
         </ul>
         <div class="list_footer">
           <ul>
@@ -71,28 +84,30 @@
       </div>
       <div class="left_content">
         <div class="about">
-          <h1><%= @fund.headline %></h1>
-          <%= @fund.content %>
+          <h1>
+            <%= @fund.headline %>
+          </h1>
+          <%= raw markdown.render(@fund.content) %>
         </div>
         <div class="products">
           <ul>
-			<% @fund.products.order('amount ASC').each do |p| %>
-            <li>
-              <h2><%= p.name %></h2>
-              <div class="product_box">
-                <div class="image"></div>
-                <span class="dollar_sign">$</span>
-                <span class="dollar_num"><%= p.amount %>+</span>
-              </div>
-            </li>
-			<% end %>
+            <% @fund.products.order('amount ASC').each do |p| %>
+              <li>
+                <h2><%= p.name %></h2>
+                <div class="product_box">
+                  <div class="image"></div>
+                  <span class="dollar_sign">$</span>
+                  <span class="dollar_num"><%= p.amount %>+</span>
+                </div>
+              </li>
+            <% end %>
             </ul>
           <div class="donation_container">
             <div class="donation_text">
               <strong>Any donations is appreciated</strong>, but the more you give, the more you get!
             </div>
             <div class="donation_form">
-              <div class="good_karma_button modal-link">Good Karma :)</div>
+              <div class="good_karma_button modal-link" data-target="modal_donate">Good Karma :)</div>
               <input type="text" class="pledge_amount" placeholder="0">
               $
             </div>
@@ -100,7 +115,7 @@
         </div>
         <div class="about">
           <h1>The location</h1>
-          <%= @fund.location %>
+          <%= raw markdown.render(@fund.location) %>
           <br/><br/><br/>
         </div>        
       </div>

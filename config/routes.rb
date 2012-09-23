@@ -14,7 +14,6 @@ Ride4Ryan::Application.routes.draw do
     resources :days
     resources :pledges
     resources :sponsors
-    
     resources :products do
       resources :orders
     end

@@ -1,0 +1,61 @@
+<%= form_for [@fund, @fund.pledges.new], :remote => true do |reg_form| %>
+	<div class="field">
+		<%= reg_form.label :first_name %><br>
+		<%= reg_form.text_field :first_name %>
+	</div>
+	
+	<div class="field">
+		<%= reg_form.label :last_name %><br>
+		<%= reg_form.text_field :last_name %>
+	</div>
+	
+	<div class="field">
+		<%= reg_form.label :shipping_address1, "Address 1" %><br>
+		<%= reg_form.text_field :shipping_address1 %>
+	</div>
+	
+	<div class="field">
+		<%= reg_form.label :shipping_address2, "Address 2" %><br>
+		<%= reg_form.text_field :shipping_address2 %>
+	</div>
+	
+	<div class="field">
+		<%= reg_form.label :shipping_city, "City" %><br>
+		<%= reg_form.text_field :shipping_city %>
+	</div>
+	
+	<div class="field">
+		<%= reg_form.label :shipping_state, "State" %><br>
+		<%= reg_form.text_field :shipping_state %>
+	</div>
+	
+	<div class="field">
+		<%= reg_form.label :shipping_zipcode, "Zipcode" %><br>
+		<%= reg_form.text_field :shipping_zipcode %>
+	</div>
+	
+	<div class="field">
+		<%= reg_form.label :period %><br>
+		<%= reg_form.text_field :period %>
+	</div>
+	
+	<div class="field">
+		<%= reg_form.label :day_id %><br>
+		<%= reg_form.text_field :day_id %>
+	</div>
+
+	<div class="actions">
+    <%= reg_form.submit :class => "good_karma_button_modal" %>
+	</div>
+	
+<% end %>
+
+<%= link_to 'Back', funds_path %>
+
+You're register <input type="text" value="25">
+<br/>
+Let us know where to send any goodies you might qualify for!
+<br/>
+Please enter your credit card information:
+
+<br/>
