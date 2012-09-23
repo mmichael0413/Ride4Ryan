@@ -26,5 +26,5 @@ $(document).ready(function(){
     $('.modal_bg').delay(100).fadeOut(100);
     $('.modal_box').fadeOut(100);
   });
-  
+
 });

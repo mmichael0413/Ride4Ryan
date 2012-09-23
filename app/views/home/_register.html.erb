@@ -1,4 +1,4 @@
-<%= form_for new_fund_pledge_path(:fund, @pledge), :remote=>true do |reg_form| %>
+<%= form_for [@fund, @fund.pledges.new], :remote => true do |reg_form| %>
 	<div class="field">
 		<%= reg_form.label :first_name %><br>
 		<%= reg_form.text_field :first_name %>
@@ -45,7 +45,7 @@
 	</div>
 
 	<div class="actions">
-	  <%= reg_form.submit %>
+    <%= reg_form.submit :class => "good_karma_button_modal" %>
 	</div>
 	
 <% end %>

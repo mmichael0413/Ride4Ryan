@@ -1,1 +1,16 @@
-Thanks <span class="donation_context"></span>! We really appreciate it! :)
+<div class="thanks_message">
+  <h1>
+    Thanks for 
+    <span class="donation_context">
+      <%= @pledge_kind %>
+    </span>!
+  </h1> 
+
+  <br/>
+  <br/>
+  <strong>We really appreciate it!  :)</strong>
+  <% if @pledge_kind == "Donating" %>
+    <br/><br/><br/>
+    If your donation reached a goodie threshold, your item(s) will be shipped ASAP!
+  <% end %>
+</div>
