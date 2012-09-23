@@ -115,7 +115,7 @@
         </div>
         <div class="about">
           <h1>The location</h1>
-          <%= @fund.location %>
+          <%= raw markdown.render(@fund.location) %>
           <br/><br/><br/>
         </div>        
       </div>

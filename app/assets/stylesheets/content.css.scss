@@ -3,7 +3,9 @@
 $background_color: #eaeef2;
 $dark_blue: #3d566e;
 
-
+.left_content{
+  margin-right:290px;
+}
 .main{
   background-color: $background_color;
   border-top:1px solid #fff;
@@ -47,7 +49,7 @@ $dark_blue: #3d566e;
 .donation_container{
   clear:both;
   font-size:15px;
-  margin-right:330px;
+  margin-right:40px;
   padding:26px 0;
   height:45px;
   .donation_text{
