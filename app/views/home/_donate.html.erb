@@ -1,0 +1,51 @@
+You're donating $<span class="donation_amount_text"></span><br/>
+Let us know where to send any goodies you might qualify for!
+<br/>
+<%= form_for [@fund, @fund.pledges.new], :remote => true do |pledge_form| %>
+	<div class="field">
+		<%= pledge_form.label :first_name %><br>
+		<%= pledge_form.text_field :first_name %>
+	</div>
+	
+	<div class="field">
+		<%= pledge_form.label :last_name %><br>
+		<%= pledge_form.text_field :last_name %>
+	</div>
+	<div class="field">
+		<%= pledge_form.check_box :opt_out %>
+		<%= pledge_form.label :opt_out, "Would you like to donate without getting goodies?" %>
+	</div>
+	
+	<div class="field">
+		<%= pledge_form.label :shipping_address1, "Address 1" %><br>
+		<%= pledge_form.text_field :shipping_address1 %>
+	</div>
+	
+	<div class="field">
+		<%= pledge_form.label :shipping_address2, "Address 2" %><br>
+		<%= pledge_form.text_field :shipping_address2 %>
+	</div>
+	
+	<div class="field">
+		<%= pledge_form.label :shipping_city, "City" %><br>
+		<%= pledge_form.text_field :shipping_city %>
+	</div>
+	
+	<div class="field">
+		<%= pledge_form.label :shipping_state, "State" %><br>
+		<%= pledge_form.text_field :shipping_state %>
+	</div>
+	
+	<div class="field">
+		<%= pledge_form.label :shipping_zipcode, "Zipcode" %><br>
+		<%= pledge_form.text_field :shipping_zipcode %>
+	</div>
+    <%= pledge_form.hidden_field :amount, :class => 'p_amt' %>
+  
+  Please enter your credit card information:
+
+	<div class="actions">
+	  <%= pledge_form.submit :class => "good_karma_button_modal" %>
+	</div>
+	
+<% end %>
