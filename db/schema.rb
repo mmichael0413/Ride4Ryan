@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120922143624) do
+ActiveRecord::Schema.define(:version => 20120924013309) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -81,14 +81,19 @@ ActiveRecord::Schema.define(:version => 20120922143624) do
     t.integer  "slot"
     t.integer  "period"
     t.integer  "day_id"
+    t.string   "email_address"
   end
 
   create_table "products", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "name"
     t.integer  "amount"
     t.integer  "fund_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -105,10 +110,14 @@ ActiveRecord::Schema.define(:version => 20120922143624) do
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "sponsors", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "fund_id"
     t.string   "link_url"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
 end
