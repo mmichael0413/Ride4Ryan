@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Thank you <%= @pledge.first_name %>, your contribution goes a long way!</h1>
+    <p>
+      You have successfully signed up for the <%= @pledge.period_time %> spin time on <%= @day.date %>.<br>
+      Please feel free to contact <%= @admin.first_name %> <%= @admin.last_name %>
+	  at <%= @admin.phone_number %> or via email at <%= @admin.email %> should you have any questions.<br>
+    </p>
+    <p>Thank you again for your help! We really appreciate it!</p>
+	<br>
+	<br>
+	<br>
+	<p>Cordially,</p>
+	<br>
+	<br>
+	<p>Ryan&#39s family</p>
+  </body>
+</html>

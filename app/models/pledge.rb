@@ -3,7 +3,7 @@ class Pledge < ActiveRecord::Base
   before_create :check_availability
   
   attr_accessible :first_name, :last_name, :shipping_address1, :shipping_address2, :shipping_city, :shipping_state
-  attr_accessible :shipping_zipcode, :amount, :opt_out, :fund_id, :slot, :period, :day_id
+  attr_accessible :shipping_zipcode, :amount, :opt_out, :fund_id, :slot, :period, :day_id, :email_address
 
   belongs_to :fund
   belongs_to :day
@@ -14,24 +14,20 @@ class Pledge < ActiveRecord::Base
     day = Day.find(fund.days.first)
     period = self.period
     
-    logger.debug "#{self.period} - this is the period"
-    
     if self.period.present?
       slots_count = Pledge.where(:fund_id => fund.id, :day_id => day.id, :period => period).count
-      logger.debug "#{slots_count} - the count of the slots"
       if slots_count == day.slots_per_period
         false
-        logger.debug "MAX POWER - RASKIN."
       else
         if slots_count > 0
-          latest_slot = Pledge.where(:fund_id => fund.id, :day_id => day.id, :period => period).order("slot DESC").map(&:slot)
+          latest_slot = Pledge.where(:fund_id => fund.id, :day_id => day.id, :period => period).order("slot DESC").map(&:slot).first
           self.slot = latest_slot + 1
+          logger.debug "#{self.slot} - this is the slot"
         else
           self.slot = 1
         end
       end
     end
-    logger.debug "#{self.slot} - the ending slot number"
   end
   
   def determine_type
@@ -60,5 +56,12 @@ class Pledge < ActiveRecord::Base
         order.save
       end
     end
+  end
+  
+  def period_time
+    day = Day.find(self.day_id)
+    times = Fund.fund_times(day)
+    
+    return times[self.period]
   end
 end
