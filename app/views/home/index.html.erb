@@ -46,24 +46,26 @@
       <div class="slot_list">
         <div class="arrow-left"></div>
         <div class="arrow-right"></div>
-        <span class="day"><%= @fund.start_date.strftime('%b %dth, %Y')%></span>
-        <ul>
-          <% @fund.times_and_slots(@fund.days.first).each do |t| %>
-            <li>
-              <span>
-                <%= t[0].strftime('%l:%M %p') %>
-              </span>
-              <span>
-                <div class="reg modal-link" data-target="modal_register">
-                 Register 
-                </div>
-              </span>
-              <span>
-                <%= t[2] %> spots
-              </span>
-            </li>
-          <% end %>
-        </ul>
+        <% @fund.days.each do |day| %>
+          <span class="day"><%= day.date.strftime('%b %dth, %Y')%></span>
+          <ul>
+            <% @fund.times_and_slots(day).each do |t| %>
+              <li>
+                <span>
+                  <%= t[0].strftime('%l:%M %p') %>
+                </span>
+                <span>
+                  <div class="reg modal-link" data-time="<%= t[0].strftime('%l:%M %p') %>" data-period="<%= t[1] %>" data-day="<%= day.id %>" data-target="modal_register">
+                   Register 
+                  </div>
+                </span>
+                <span>
+                  <%= t[2] %> spots
+                </span>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
         <div class="list_footer">
           <ul>
             <li></li>
