@@ -37,4 +37,8 @@ Ride4Ryan::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
+  ENV['S3_BUCKET_NAME'] = 'VentureMedias'
+  ENV['AWS_ACCESS_KEY_ID'] = 'AKIAIYNFQXEWXZWSYTJA'
+  ENV['AWS_SECRET_ACCESS_KEY'] = '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'
 end
