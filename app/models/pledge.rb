@@ -20,7 +20,7 @@ class Pledge < ActiveRecord::Base
         false
       else
         if slots_count > 0
-          latest_slot = Pledge.where(:fund_id => fund.id, :day_id => day.id, :period => period).order("slot DESC").map(&:slot)
+          latest_slot = Pledge.where(:fund_id => fund.id, :day_id => day.id, :period => period).order("slot DESC").map(&:slot).first
           self.slot = latest_slot + 1
           logger.debug "#{self.slot} - this is the slot"
         else
