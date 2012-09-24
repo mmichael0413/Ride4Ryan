@@ -97,7 +97,9 @@
               <li>
                 <h2><%= p.name %></h2>
                 <div class="product_box">
-                  <div class="image"></div>
+                  <div class="image">
+                    <%= image_tag p.image.url %>                  
+                  </div>
                   <span class="dollar_sign">$</span>
                   <span class="dollar_num"><%= p.amount %>+</span>
                 </div>

@@ -34,8 +34,12 @@ $dark_blue: #3d566e;
       height:220px;
       text-align:center;
       .image{
-        width:100%;
-        height:170px;
+        width: 250px;
+        height: 150px;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        padding-top:20px;
       }
       .dollar_num{
         color:#fff;
