@@ -16,6 +16,7 @@ class PledgesController < ApplicationController
       @pledge_kind = "Registering"
     else
       @pledge_kind = "Donating"
+    end
     
     respond_to do |format|
       if @pledge.save
