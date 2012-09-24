@@ -1,8 +1,10 @@
 You're donating $<span class="donation_amount_text"></span><br/>
-Let us know where to send any goodies you might qualify for!
-<br/>
+Shipping address
+<br/><br/>
 <%= form_for [@fund, @fund.pledges.new], :remote => true do |pledge_form| %>
-	<div class="field">
+  <%= pledge_form.check_box :opt_out %>
+  <%= pledge_form.label :opt_out, "Would you like to donate without getting goodies?" %>
+  <div class="field">
 		<%= pledge_form.label :first_name %><br>
 		<%= pledge_form.text_field :first_name %>
 	</div>
@@ -10,10 +12,6 @@ Let us know where to send any goodies you might qualify for!
 	<div class="field">
 		<%= pledge_form.label :last_name %><br>
 		<%= pledge_form.text_field :last_name %>
-	</div>
-	<div class="field">
-		<%= pledge_form.check_box :opt_out %>
-		<%= pledge_form.label :opt_out, "Would you like to donate without getting goodies?" %>
 	</div>
 	
 	<div class="field">
@@ -41,11 +39,12 @@ Let us know where to send any goodies you might qualify for!
 		<%= pledge_form.text_field :shipping_zipcode %>
 	</div>
     <%= pledge_form.hidden_field :amount, :class => 'p_amt' %>
-  
-  Please enter your credit card information:
 
+  <div class="clear">
+    Please enter your credit card information:
+  </div>
 	<div class="actions">
-	  <%= pledge_form.submit :class => "good_karma_button_modal" %>
+    <%= pledge_form.submit :value => "Donate", :class => "clear good_karma_button_modal" %>
 	</div>
 	
 <% end %>
