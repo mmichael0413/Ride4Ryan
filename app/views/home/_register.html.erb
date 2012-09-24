@@ -11,6 +11,11 @@ You're registering to spin at <span class="selected_spin_time"></span>, the fee 
 		<%= reg_form.label :last_name %><br>
 		<%= reg_form.text_field :last_name %>
 	</div>
+
+  <div class="field">
+		<%= reg_form.label :email_address %><br>
+		<%= reg_form.text_field :email_address %>
+	</div>
 	
   <%= reg_form.hidden_field :period, :class => "period_num" %>
   <%= reg_form.hidden_field :day_id, :class => "day_id" %>
