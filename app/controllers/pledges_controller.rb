@@ -12,7 +12,7 @@ class PledgesController < ApplicationController
     @fund = Fund.find(params[:fund_id])
     @pledge = @fund.pledges.create(params[:pledge])
     
-    if @pledge.save
+    if @pledge.save_with_payment
       if @pledge.period
         @pledge_kind = "Registering"
         UserMailer.registration_email(@pledge).deliver

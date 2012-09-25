@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120924013309) do
+ActiveRecord::Schema.define(:version => 20120925021210) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(:version => 20120924013309) do
   end
 
   create_table "pledges", :force => true do |t|
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "shipping_address1"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20120924013309) do
     t.integer  "period"
     t.integer  "day_id"
     t.string   "email_address"
+    t.string   "stripe_customer_token"
   end
 
   create_table "products", :force => true do |t|
