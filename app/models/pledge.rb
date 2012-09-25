@@ -37,8 +37,9 @@ class Pledge < ActiveRecord::Base
     
     #If the pledge donates enough to get a product, and does not opt_out, and is not registering for spinning
     #then create a new order
-    if self.period
+    if self.period.present?
       self.amount = self.fund.registration_fee
+      self.save
     else
       if self.amount >= product_amounts[0] && self.opt_out == false && self.period.blank?
         order = Order.new
@@ -60,7 +61,7 @@ class Pledge < ActiveRecord::Base
   
   def period_time
     day = Day.find(self.day_id)
-    times = Fund.fund_times(day)
+    times = self.fund.fund_times(day)
     
     return times[self.period]
   end

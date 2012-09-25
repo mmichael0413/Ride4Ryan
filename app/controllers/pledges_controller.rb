@@ -12,24 +12,15 @@ class PledgesController < ApplicationController
     @fund = Fund.find(params[:fund_id])
     @pledge = @fund.pledges.create(params[:pledge])
     
-    if @pledge.period
-      @pledge_kind = "Registering"
-    else
-      @pledge_kind = "Donating"
-    end
-    
-    respond_to do |format|
-      if @pledge.save
-        # Tell the UserMailer to send a registration email after save
+    if @pledge.save
+      if @pledge.period
+        @pledge_kind = "Registering"
         UserMailer.registration_email(@pledge).deliver
-        
-        format.html  { redirect_to(@fund, :notice => 'Pledge was successfully created.') }
-        format.json  { render :json => @pledge, :status => :created, :location => @pledge }
       else
-        format.html  { render :action => "new" }
-        format.json  { render :json => @pledge.errors, :status => :unprocessable_entity }
+        @pledge_kind = "Donating"
       end
     end
+      
     respond_to do |format|
       format.js { render :pledge_kind => @pledge_kind }
     end    
