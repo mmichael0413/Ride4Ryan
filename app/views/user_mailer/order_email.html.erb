@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+	<p>
+	<%= @admin.first_name %>, a new order for a <%= @product.name %> has been placed on <%= @fund.name %>! Please see shipment info below:<br>
+	</p>
+	<p>
+	<%= @pledge.first_name %> <%= @pledge.last_name %><br>
+	<%= @pledge.shipping_address1 %><br>
+	<%= @pledge.shipping_address2 %><br>
+	<%= @pledge.shipping_city %>, <%= @pledge.shipping_state %> <%= @pledge.shipping_zipcode %><br>
+	</p>
+	<p>
+	You may contact <%= @pledge.first_name %> at <%= @pledge.email_address %> should you have any questions.<br>
+	</p>
+  </body>
+</html>

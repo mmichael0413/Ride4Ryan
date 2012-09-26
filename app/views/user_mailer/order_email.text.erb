@@ -1,0 +1,8 @@
+<%= @admin.first_name %>, a new order for a <%= @product.name %> has been placed on <%= @fund.name %>! Please see shipment info below:
+
+<%= @pledge.first_name %> <%= @pledge.last_name %>
+<%= @pledge.shipping_address1 %>
+<%= @pledge.shipping_address2 %>
+<%= @pledge.shipping_city %>, <%= @pledge.shipping_state %> <%= @pledge.shipping_zipcode %>
+
+You may contact <%= @pledge.first_name %> at <%= @pledge.email_address %> should you have any questions.

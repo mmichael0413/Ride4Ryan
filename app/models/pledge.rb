@@ -81,6 +81,7 @@ class Pledge < ActiveRecord::Base
           end
           
         order.save
+        UserMailer.order_email(self).deliver
       end
     end
   end
