@@ -1,7 +1,7 @@
 You're donating $<span class="donation_amount_text"></span><br/>
 Shipping address
 <br/><br/>
-<%= form_for [@fund, @fund.pledges.new], :remote => true do |pledge_form| %>
+<%= form_for [@fund, @fund.pledges.new], :id => "new_pledge_donate", :remote => true do |pledge_form| %>
   <%= pledge_form.check_box :opt_out %>
   <%= pledge_form.label :opt_out, "Would you like to donate without getting goodies?" %>
   <div class="field">
@@ -56,7 +56,7 @@ Shipping address
 	</div>
 	
 	<div class="field">
-		<%= label_tag :card_code, "Security Code on Card (CVV)" %>
+		<%= label_tag :card_code, "Security Code on Card (CVC)" %>
 		<%= text_field_tag :card_code, nil, name: nil %>
 	</div>
 	

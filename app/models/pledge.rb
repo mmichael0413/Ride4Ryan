@@ -18,13 +18,13 @@ class Pledge < ActiveRecord::Base
     if valid?
       if self.stripe_customer_token.present?
         customer = Stripe::Customer.retrieve(self.stripe_customer_token)
-        customer.card = stripe_customer_token
+        customer.card = stripe_card_token
         customer.save
       else
         customer = Stripe::Customer.create(:description => self.email_address, :card => stripe_card_token)
       end
       
-      charge = Stripe::Charge.create(:amount => self.amount, :currency => "usd", :description => "Donation to Ride4Ryan", :customer => customer)
+      charge = Stripe::Charge.create(:amount => (self.amount * 100).to_i, :currency => "usd", :description => "Donation to Ride4Ryan", :customer => customer)
       self.stripe_customer_token = customer.id
       self.save!
       save!

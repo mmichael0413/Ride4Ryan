@@ -7,7 +7,7 @@ jQuery ->
 	
 pledge =
 	setupForm: ->
-		$('#new_pledge').submit ->
+		$('#new_pledge_donate').submit ->
 			$('input[type=submit]').attr('disable', true)
 			pledge.processCard()
 			false
@@ -23,7 +23,7 @@ pledge =
 	handleStripeResponse: (status, response) ->
 		if status == 200
 			$('#pledge_stripe_card_token').val(response.id)
-			$('#new_pledge')[0].submit()
+			$('#new_pledge_donate')[0].submit()
 		else
 			$('#stripe_error').text(response.error.message)
 			$('input[type=submit]').attr('disable', false)

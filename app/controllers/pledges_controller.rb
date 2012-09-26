@@ -18,6 +18,7 @@ class PledgesController < ApplicationController
         UserMailer.registration_email(@pledge).deliver
       else
         @pledge_kind = "Donating"
+        UserMailer.donation_email(@pledge).deliver
       end
     end
       
