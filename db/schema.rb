@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120924013309) do
+ActiveRecord::Schema.define(:version => 20120926235005) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(:version => 20120924013309) do
   end
 
   create_table "funds", :force => true do |t|
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
     t.string   "title"
     t.text     "headline"
     t.text     "content"
@@ -55,6 +55,10 @@ ActiveRecord::Schema.define(:version => 20120924013309) do
     t.text     "location"
     t.text     "blurb"
     t.integer  "registration_fee"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
   end
 
   create_table "orders", :force => true do |t|
@@ -66,8 +70,8 @@ ActiveRecord::Schema.define(:version => 20120924013309) do
   end
 
   create_table "pledges", :force => true do |t|
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "shipping_address1"
@@ -82,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20120924013309) do
     t.integer  "period"
     t.integer  "day_id"
     t.string   "email_address"
+    t.string   "stripe_customer_token"
   end
 
   create_table "products", :force => true do |t|

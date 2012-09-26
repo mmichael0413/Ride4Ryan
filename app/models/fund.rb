@@ -3,6 +3,14 @@ class Fund < ActiveRecord::Base
   
   validates_presence_of :title, :headline, :content
   
+  has_attached_file :background,
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket            => ENV['S3_BUCKET_NAME'],
+      :access_key_id     => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  
   belongs_to :admin
   has_many :days, :dependent => :destroy
   has_many :products, :dependent => :destroy
