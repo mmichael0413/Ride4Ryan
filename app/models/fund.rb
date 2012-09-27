@@ -1,5 +1,5 @@
 class Fund < ActiveRecord::Base
-  attr_accessible :title, :headline, :content, :location, :blurb, :registration_fee, :background
+  attr_accessible :title, :headline, :content, :location, :blurb, :registration_fee, :background, :admin_id
   
   validates_presence_of :title, :headline, :content
   
