@@ -55,7 +55,7 @@
                   <%= t[0].strftime('%l:%M %p') %>
                 </span>
                 <span>
-                  <div class="reg modal-link" data-time="<%= t[0].strftime('%l:%M %p') %>" data-period="<%= t[1] %>" data-day="<%= day.id %>" data-target="modal_register">
+                  <div class="reg modal-link" data-length="<%= day.period_length %>" data-time="<%= t[0].strftime('%l:%M %p') %>" data-period="<%= t[1] %>" data-day="<%= day.id %>" data-target="modal_register">
                    Register 
                   </div>
                 </span>

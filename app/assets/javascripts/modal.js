@@ -4,6 +4,7 @@ $(document).ready(function(){
     content = $(this).attr("data-target");
     day = $(this).attr("data-day");
     period = $(this).attr("data-period");
+    length = $(this).attr("data-length");
     spin_time = $(this).attr("data-time");
     $('.modal_content').hide();
     amount = $('input.pledge_amount').val();
@@ -14,6 +15,7 @@ $(document).ready(function(){
     }
     $('.modal_title h2').text(title);
     $('.selected_spin_time').text(spin_time);
+    $('.spin_length').text(length);
     $('.donation_amount_text').text(amount);
     $('input.p_amt').val(amount);
     $('input.period_num').val(period);

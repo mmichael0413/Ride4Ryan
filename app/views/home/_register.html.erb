@@ -1,4 +1,4 @@
-You're registering to spin at <span class="selected_spin_time"></span>, the fee is $<%= @fund.registration_fee %>
+You're registering to spin at <span class="selected_spin_time"></span> for <span class="spin_length"></span> minutes, the fee is $<%= @fund.registration_fee %>
 <br/><br/>
 
 <%= form_for [@fund, @fund.pledges.new], :remote => true do |reg_form| %>
