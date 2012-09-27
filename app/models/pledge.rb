@@ -22,7 +22,6 @@ class Pledge < ActiveRecord::Base
         if slots_count > 0
           latest_slot = Pledge.where(:fund_id => fund.id, :day_id => day.id, :period => period).order("slot DESC").map(&:slot).first
           self.slot = latest_slot + 1
-          logger.debug "#{self.slot} - this is the slot"
         else
           self.slot = 1
         end
@@ -41,9 +40,7 @@ class Pledge < ActiveRecord::Base
       self.amount = self.fund.registration_fee
       self.save
       
-      logger.debug "sending the email!"
-      UserMailer.registration_email(self).deliver 
-      logger.debug "Its been called!"
+      UserMailer.registration_email(self).deliver
     else
       if self.amount >= product_amounts[0] && self.opt_out == false && self.period.blank?
         order = Order.new
@@ -59,6 +56,7 @@ class Pledge < ActiveRecord::Base
           end
           
         order.save
+        UserMailer.donation_email(self).deliver
       end
     end
   end
