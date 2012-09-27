@@ -1,7 +1,6 @@
 class PledgesController < ApplicationController
   def new
     @pledge = Pledge.new
-    @pledge = @fund.pledges.create(params[:pledge])
 
     respond_to do |format|
       format.html  # new.html.erb
@@ -11,6 +10,7 @@ class PledgesController < ApplicationController
   
   def create
     @fund = Fund.find(params[:fund_id])
+    @pledge = @fund.pledges.create(params[:pledge])
     
     if @pledge.save
       if @pledge.period
