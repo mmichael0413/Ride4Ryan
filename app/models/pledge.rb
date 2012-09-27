@@ -3,11 +3,28 @@ class Pledge < ActiveRecord::Base
   before_create :check_availability
   
   attr_accessible :first_name, :last_name, :shipping_address1, :shipping_address2, :shipping_city, :shipping_state
-  attr_accessible :shipping_zipcode, :amount, :opt_out, :fund_id, :slot, :period, :day_id, :email_address
+  attr_accessible :shipping_zipcode, :amount, :opt_out, :fund_id, :slot, :period, :day_id, :email_address, :stripe_card_token
+
+  attr_accessor :stripe_card_token
 
   belongs_to :fund
   belongs_to :day
   has_many :orders
+
+  def save_with_payment
+    if self.day
+      msg = "#{self.email_address} registered"
+    else
+      msg = "#{self.email_address} donated"
+    end
+    
+    Stripe::Charge.create(description: msg, currency: "usd", amount: (self.amount * 100), card: stripe_card_token)
+    
+  rescue Stripe::InvalidRequestError => e
+      logger.error "Stripe error while creating customer: #{e.message}"
+      errors.add :base, "There was a problem with your credit card."
+      false
+  end
   
   def check_availability
     fund = Fund.find(self.fund_id)

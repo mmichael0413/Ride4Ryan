@@ -1,7 +1,6 @@
 class PledgesController < ApplicationController
   def new
     @pledge = Pledge.new
-    @pledge = @fund.pledges.create(params[:pledge])
 
     respond_to do |format|
       format.html  # new.html.erb
@@ -11,7 +10,8 @@ class PledgesController < ApplicationController
   
   def create
     @fund = Fund.find(params[:fund_id])
-    
+    @pledge = @fund.pledges.build(params[:pledge])
+
     if @pledge.save
       if @pledge.period
         @pledge_kind = "Registering"
@@ -19,10 +19,15 @@ class PledgesController < ApplicationController
         @pledge_kind = "Donating"
       end
     end
-      
-    respond_to do |format|
-      format.js { render :pledge_kind => @pledge_kind }
-    end    
+
+    if @pledge.save_with_payment
+      msg = "thanks"
+    else
+      msg = "error"
+    end
+
+    redirect_to :controller => 'home', :action => 'index', :msg => msg    
+
   end
 
 end

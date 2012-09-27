@@ -86,10 +86,15 @@
       </div>
       <div class="left_content">
         <div class="about">
+          <% if @msg %>
+            <div class="transaction_response">
+              <%= @msg %>
+            </div>
+          <% end %>          
           <h1>
             <%= @fund.headline %>
           </h1>
-          <%= raw markdown.render(@fund.content) %>
+          <%= raw markdown.render(@fund.content) %>          
         </div>
         <div class="products">
           <ul>

@@ -105,3 +105,13 @@ $dark_blue: #3d566e;
     }
   }
 }
+.transaction_response{
+  background-color:#C0CDDB;
+  @include border-radius(6px);
+  padding:20px 30px;
+  text-align:center;
+  font-size:22px;
+  color:$dark_blue;
+  font-family:'Pacifico';
+  margin:19px 0 37px 0;
+}

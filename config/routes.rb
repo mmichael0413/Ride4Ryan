@@ -4,12 +4,12 @@ Ride4Ryan::Application.routes.draw do
   
   devise_for :admins
 
-  get "home/index"
-
   root :to => 'home#index'
   
   resources :admins
   
+  resources :home, only: [:index, :create] 
+
   resources :funds do
     resources :days
     resources :pledges
