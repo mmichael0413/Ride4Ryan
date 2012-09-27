@@ -11,7 +11,7 @@ class PledgesController < ApplicationController
   def create
     @fund = Fund.find(params[:fund_id])
     @pledge = @fund.pledges.build(params[:pledge])
-
+    
     if @pledge.save
       if @pledge.period
         @pledge_kind = "Registering"
