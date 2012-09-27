@@ -40,6 +40,10 @@ class Pledge < ActiveRecord::Base
     if self.period.present?
       self.amount = self.fund.registration_fee
       self.save
+      
+      logger.debug "sending the email!"
+      UserMailer.registration_email(self).deliver 
+      logger.debug "Its been called!"
     else
       if self.amount >= product_amounts[0] && self.opt_out == false && self.period.blank?
         order = Order.new

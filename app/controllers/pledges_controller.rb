@@ -15,7 +15,6 @@ class PledgesController < ApplicationController
     if @pledge.save
       if @pledge.period
         @pledge_kind = "Registering"
-        UserMailer.registration_email(@pledge).deliver
       else
         @pledge_kind = "Donating"
       end
