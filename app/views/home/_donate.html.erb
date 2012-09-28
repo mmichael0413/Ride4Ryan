@@ -1,10 +1,21 @@
-You're donating $<span class="donation_amount_text"></span><br/>
-Shipping address
-<br/><br/>
+<div class="register_only">
+  <strong>
+    You're registering to spin at <span class="selected_spin_time"></span> for <span class="spin_length"></span> minutes, the fee is $<%= @fund.registration_fee %>
+  </strong>
+  <br/><br/>
+</div>
+<div class="donate_only">
+  <strong>You're donating $<span class="donation_amount_text"></span></strong>
+</div>
+
 <%= form_for([@fund, @pledge], :html => { :id => "donate_form", :remote => true }) do |pledge_form| %>
-  <%= pledge_form.check_box :opt_out %>
-  <%= pledge_form.label :opt_out, "Would you like to donate without getting goodies?" %>
-  <div class="field">
+
+<div class="donate_only" style="margin:15px 0">
+  <%= pledge_form.check_box :opt_out, :style => "width:20px;" %>
+  <%= pledge_form.label :opt_out, "Donate without getting goodies?" %>
+</div>  
+
+<div class="field">
 		<%= pledge_form.label :first_name %><br>
 		<%= pledge_form.text_field :first_name %>
 	</div>
@@ -18,7 +29,12 @@ Shipping address
 		<%= pledge_form.label :email_address %><br>
 		<%= pledge_form.text_field :email_address %>
 	</div>
-	
+  
+  <%= pledge_form.hidden_field :period, :class => "period_num" %>
+  <%= pledge_form.hidden_field :day_id, :class => "day_id" %>
+
+<div class="donate_only clear">
+
 	<div class="field">
 		<%= pledge_form.label :shipping_address1, "Address 1" %><br>
 		<%= pledge_form.text_field :shipping_address1 %>
@@ -36,45 +52,43 @@ Shipping address
 	
 	<div class="field">
 		<%= pledge_form.label :shipping_state, "State" %><br>
-		<%= pledge_form.text_field :shipping_state %>
+    <%= pledge_form.text_field :shipping_state, :style => "width:50px;" %>
 	</div>
 	
 	<div class="field">
 		<%= pledge_form.label :shipping_zipcode, "Zipcode" %><br>
-		<%= pledge_form.text_field :shipping_zipcode %>
+		<%= pledge_form.text_field :shipping_zipcode, :style => "width:80px;" %>
 	</div>
-    <%= pledge_form.hidden_field :amount, :class => 'p_amt' %>
+</div>	
 
+<%= pledge_form.hidden_field :amount, :class => 'p_amt' %>
+<%= pledge_form.hidden_field :stripe_card_token %>
 
-    <%= pledge_form.hidden_field :stripe_card_token %>
-
-<% if @pledge.stripe_card_token.present? %>
-  Credit card has been provided.
-<% else %>
-  <div class="field">
-    <%= label_tag :card_number, "Credit Card Number" %>
-    <%= text_field_tag :card_number, nil, name: nil %>
+<div class="credit_card_box">
+  <% if @pledge.stripe_card_token.present? %>
+    Credit card has been provided.
+  <% else %>
+    <div class="field">
+      <%= label_tag :card_number, "Credit Card Number" %><br/>
+      <%= text_field_tag :card_number, nil, name: nil %>
+    </div>
+    <div class="field">
+      <%= label_tag :card_code, "(CVV)" %><br/>
+      <%= text_field_tag :card_code, nil, name: nil, :style => "width:50px;" %>
+    </div>
+    <div class="field">
+      <%= label_tag :card_month, "Card Expiration" %><br/>
+      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+    </div>
+  <% end %>
+  <div id="stripe_error">
+    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
   </div>
-  <div class="field">
-    <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-    <%= text_field_tag :card_code, nil, name: nil %>
-  </div>
-  <div class="field">
-    <%= label_tag :card_month, "Card Expiration" %>
-    <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
-    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
-  </div>
-<% end %>
-<div id="stripe_error">
-  <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
 </div>
 
-
-  <div class="clear">
-    Please enter your credit card information:
-  </div>
-	<div class="actions">
-    <%= pledge_form.submit :value => "Donate", :class => "clear good_karma_button_modal" %>
-	</div>
+<div class="actions">
+  <%= pledge_form.submit :value => "Donate", :class => "clear good_karma_button_modal" %>
+</div>
 	
 <% end %>

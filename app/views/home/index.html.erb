@@ -3,11 +3,8 @@
     <span class="modal-link-close">close</span>
     <h2>Title</h2>
   </div>
-  <div class="modal_content modal_donate">
+  <div class="modal_content">
     <%= render 'donate', :fund => @fund, :pledge => @pledge %>
-  </div>
-  <div class="modal_content modal_register">
-    <%= render 'register', :fund => @fund, :pledge => @pledge %>
   </div>
 </div>
 <div class="modal_bg">
@@ -97,7 +94,7 @@
           <%= raw markdown.render(@fund.content) %>          
         </div>
         <div class="products">
-          <ul>
+          <ul data-fee="<%= @fund.registration_fee %>">
             <% @fund.products.order('amount ASC').each do |p| %>
               <li>
                 <h2><%= p.name %></h2>
