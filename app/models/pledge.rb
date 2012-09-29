@@ -66,6 +66,8 @@ class Pledge < ActiveRecord::Base
           products.each_with_index do |p, index|
             if self.amount > p[index][1]
               order.product_id = p[index][0]
+            else
+              false
             end
           end
           
