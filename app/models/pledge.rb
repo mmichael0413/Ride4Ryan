@@ -58,7 +58,7 @@ class Pledge < ActiveRecord::Base
       
       UserMailer.registration_email(self).deliver
     else
-      if self.amount >= product_amounts[0] && self.opt_out == false && self.period.blank?
+      if self.amount >= products[0][1] && self.opt_out == false && self.period.blank?
         order = Order.new
         order.pledge_id = self.id
         
