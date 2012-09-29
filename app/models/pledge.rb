@@ -64,10 +64,8 @@ class Pledge < ActiveRecord::Base
         
           #Check the amount from new pledge form to determine the order's product id
           products.each_with_index do |p, index|
-            if self.amount > p[index][1]
+            if self.amount > p[index][1] && p[index][1].present?
               order.product_id = p[index][0]
-            else
-              false
             end
           end
           
