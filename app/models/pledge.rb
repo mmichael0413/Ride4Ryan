@@ -58,17 +58,19 @@ class Pledge < ActiveRecord::Base
       
       UserMailer.registration_email(self).deliver
     else
-      if self.amount >= products[0][1] && self.opt_out == false && self.period.blank?
+      if self.amount >= products.last[1] && self.opt_out == false && self.period.blank?
         order = Order.new
         order.pledge_id = self.id
         
-          #Check the amount from new pledge form to determine product id
+          #Check the amount from new pledge form to determine the order's product id
           products.each_with_index do |p, index|
             if self.amount > p[index][1]
               order.product_id = p[index][0]
-              order.save
             end
           end
+          
+        order.save
+        
         UserMailer.donation_email(self).deliver
       end
     end
