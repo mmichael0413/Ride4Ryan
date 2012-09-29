@@ -11,4 +11,5 @@ class Product < ActiveRecord::Base
   
   belongs_to :fund
   has_many :orders
+  
 end
