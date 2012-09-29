@@ -5,10 +5,18 @@
   </head>
   <body>
 	<p>
-		Thank you for signing up for Ride4Ryan. You have successfully registered to spin times are listed below (MIKE only do this if you can list out their times). We can't thank you enough for volunteering your time and money to this wonderful cause. We'll see you on 10/28 at Natural High Fitness Club at 50 Water Street Newburyport, MA 01950 (Floors 2 + 3).
-
-		Thank you,
-
+		Thank you for signing up for Ride4Ryan. You have successfully registered to spin at 
+		<%= @time[@pledge.period].strftime('%l:%M %p') %> on <%= @day.date.strftime('%b %dth') %>.<br>
+	</p>
+	<p>
+		We can't thank you enough for volunteering your time and money to this wonderful cause.<br>
+		We'll see you on 10/28 at Natural High Fitness Club at 50 Water Street, Newburyport, MA 01950 (Floors 2 + 3).<br>
+		<br>
+	</p>
+	<p>
+		Thank you,<br>
+		<br>
 		Jesse + Lindsay Sutton
+	</p>
   </body>
 </html>
