@@ -48,8 +48,7 @@ class Pledge < ActiveRecord::Base
   
   def determine_type
     #Grab all product amounts for current fund
-    product_amounts = Product.where(:fund_id => self.fund_id).order("amount ASC").map(&:amount)
-    product_ids = Product.where(:fund_id => self.fund_id).order("amount ASC").map(&:id)
+    products = self.fund.products.order("amount DESC").collect{|p| [p.id, p.amount]}
     
     #If the pledge donates enough to get a product, and does not opt_out, and is not registering for spinning
     #then create a new order
@@ -64,15 +63,12 @@ class Pledge < ActiveRecord::Base
         order.pledge_id = self.id
         
           #Check the amount from new pledge form to determine product id
-          product_amounts.count.times do |p|
-            if self.amount >= product_amounts[p] && self.amount < product_amounts[p + 1]
-              order.product_id = product_ids[p]
-            elsif self.amount >= product_amounts.last
-              order.product_id = product_ids.last
+          products.each_with_index do |p, index|
+            if self.amount > p[index][1]
+              order.product_id = p[index][0]
+              order.save
             end
           end
-          
-        order.save
         UserMailer.donation_email(self).deliver
       end
     end

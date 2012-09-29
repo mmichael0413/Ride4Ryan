@@ -71,5 +71,4 @@ class Fund < ActiveRecord::Base
     
     return times_and_slots
   end
-
 end
