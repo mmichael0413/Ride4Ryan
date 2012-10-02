@@ -11,6 +11,7 @@ gem 'devise'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk', '~> 1.3.4'
 gem 'stripe'
+gem 'capybara'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'
