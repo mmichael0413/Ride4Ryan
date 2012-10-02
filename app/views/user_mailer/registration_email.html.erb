@@ -6,7 +6,7 @@
   <body>
 	<p>
 		Thank you for signing up for Ride4Ryan. You have successfully registered to spin at 
-		<%= @time[@pledge.period].strftime('%l:%M %p') %> on <%= @day.date.strftime('%b %dth') %>.<br>
+		<%= @time[@pledge.period - 1].strftime('%l:%M %p') %> on <%= @day.date.strftime('%b %dth') %>.<br>
 	</p>
 	<p>
 		We can't thank you enough for volunteering your time and money to this wonderful cause.<br>
