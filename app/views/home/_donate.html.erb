@@ -1,11 +1,11 @@
 <div class="register_only">
   <strong>
-    You're registering to spin at <span class="selected_spin_time"></span> for <span class="spin_length"></span> minutes, the fee is $<%= @fund.registration_fee %>
+    You're registering to spin at <span class="selected_spin_time"></span> for <span class="spin_length"></span> minutes, the <span class="highlight">fee is $<%= @fund.registration_fee %></span>
   </strong>
   <br/><br/>
 </div>
 <div class="donate_only">
-  <strong>You're donating $<span class="donation_amount_text"></span></strong>
+  <strong>You're donating <span class="highlight">$<span class="donation_amount_text"></span></span></strong>
 </div>
 
 <%= form_for([@fund, @pledge], :html => { :id => "donate_form", :remote => true }) do |pledge_form| %>
