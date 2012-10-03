@@ -17,6 +17,11 @@ $dark_blue: #3d566e;
   font-size:14px;
   line-height:21px;
 }
+.location{
+  clear:both;
+  font-size:14px;
+  line-height:21px;
+}
 .products ul{
   list-style:none;
   margin:0;
@@ -51,10 +56,9 @@ $dark_blue: #3d566e;
   }
 }
 .donation_container{
-  clear:both;
   font-size:15px;
   margin-right:40px;
-  padding:26px 0;
+  padding:26px 0 0;
   height:45px;
   .donation_text{
     float:left;

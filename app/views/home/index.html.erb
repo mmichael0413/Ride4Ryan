@@ -93,6 +93,16 @@
           </h1>
           <%= raw markdown.render(@fund.content) %>          
         </div>
+        <div class="donation_container">
+          <div class="donation_text">
+            <strong>Any donations are appreciated</strong>, but the more you give, the more you get!
+          </div>
+          <div class="donation_form">
+            <div class="good_karma_button modal-link" data-target="modal_donate">Good Karma :)</div>
+            <input type="text" class="pledge_amount" placeholder="0">
+            $
+          </div>
+        </div>        
         <div class="products">
           <ul data-fee="<%= @fund.registration_fee %>">
             <% @fund.products.order('amount ASC').each do |p| %>
@@ -108,18 +118,8 @@
               </li>
             <% end %>
             </ul>
-          <div class="donation_container">
-            <div class="donation_text">
-              <strong>Any donations are appreciated</strong>, but the more you give, the more you get!
-            </div>
-            <div class="donation_form">
-              <div class="good_karma_button modal-link" data-target="modal_donate">Good Karma :)</div>
-              <input type="text" class="pledge_amount" placeholder="0">
-              $
-            </div>
-          </div>
         </div>
-        <div class="about">
+        <div class="location">
           <h1>The location</h1>
           <%= raw markdown.render(@fund.location) %>
           <br/><br/><br/>
