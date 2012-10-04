@@ -12,8 +12,15 @@ gem 'paperclip', '~> 3.0'
 gem 'aws-sdk', '~> 1.3.4'
 gem 'stripe'
 
-group :test, :development do
-  gem 'rspec-rails', '~> 2.0'
+group :development, :test do
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'simplecov'
 end
 
 # Gems used only for assets and not required
