@@ -3,6 +3,12 @@
 $background_color: #eaeef2;
 $dark_blue: #3d566e;
 
+.twitter-share-button, .fb-like{
+  float:right;
+}
+.fb-like{
+  margin-top:-15px;
+}
 .left_content{
   margin-right:290px;
 }
