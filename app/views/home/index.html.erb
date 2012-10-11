@@ -57,7 +57,11 @@
                   </div>
                 </span>
                 <span>
-                  <%= t[2] %> spots
+				  <% if t[2] <= 0 %>
+					Full
+				  <% else %>
+                  	<%= t[2] %> spots
+				  <% end %>
                 </span>
               </li>
             <% end %>
