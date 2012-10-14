@@ -52,16 +52,18 @@
                   <%= t[0].strftime('%l:%M %p') %>
                 </span>
                 <span>
-                  <div class="reg modal-link" data-length="<%= day.period_length %>" data-time="<%= t[0].strftime('%l:%M %p') %>" data-period="<%= t[1] %>" data-day="<%= day.id %>" data-target="modal_register">
+				  <% if t[2] == 0 %>
+                  	<div class="reg">
+                   	Full 
+                  	</div>
+				  <% else %>
+				  <div class="reg modal-link" data-length="<%= day.period_length %>" data-time="<%= t[0].strftime('%l:%M %p') %>" data-period="<%= t[1] %>" data-day="<%= day.id %>" data-target="modal_register">
                    Register 
                   </div>
+				  <% end %>
                 </span>
                 <span>
-				  <% if t[2] <= 0 %>
-					Full
-				  <% else %>
-                  	<%= t[2] %> spots
-				  <% end %>
+					<%= t[2] %> spots
                 </span>
               </li>
             <% end %>
