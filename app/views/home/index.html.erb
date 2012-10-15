@@ -143,6 +143,11 @@
       <div class="sponsor_text">
         And an <strong>enormous</strong> thanks, to our <strong>incredible</strong> sponsors!
       </div>
+      <div class="sponsor_logos">
+        <% @fund.sponsors.each do |s| %>
+          <%= image_tag s.logo.url, :style => "max-height:60px;margin:20px 20px 0 0;" %>                            
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

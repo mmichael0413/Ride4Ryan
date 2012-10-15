@@ -9,5 +9,5 @@ class Sponsor < ActiveRecord::Base
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   
-  belongs_to :funds
+  belongs_to :fund
 end
